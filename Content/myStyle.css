@@ -1,0 +1,61 @@
+﻿
+
+
+
+body {
+    
+    background-image: url('BACKGROUND.jpg');
+    background-size: cover;
+}
+
+       .testInfoLabel{
+           float: right;width: 70%;
+           font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+           font-size:large;
+       }       
+       legend {
+        border-bottom: none;
+    }
+       .nP {
+        /*padding-left: 0 !important;*/
+        padding-right: 0 !important;
+    }
+
+  .jumbotron {
+        opacity: 0.85 !important;
+        line-height:14px;
+        padding-bottom:0;
+        padding-top:0;
+        
+        /*background: rgb(200, 54, 54); /* This is for ie8 and below */
+        /*background: rgba(200, 54, 54, 0.5);*/*/ 
+       
+}
+     .testInfoLabel2 {
+         list-style-type: none !important;
+         /*float: right;width: 70%;*/
+         font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         font-size:large;
+       }
+     div#resultPane.row.jumbotron ul li {
+         list-style-type: none !important;
+         margin-left: 0 !important;
+     }
+      div#resultPane.row.jumbotron ul {
+         padding-left: 0 !important;
+     }
+     h1.mainheader{
+          text-align: center;
+          padding: 10px !important;
+          background-color: forestgreen !important;
+          border-radius: 6px !important;
+      }
+     #ManOrWoman{
+          border-radius: 5px !important;
+          border: 2px solid forestgreen !important;
+     }
+
+     h4{
+         color:darkmagenta !important;
+     }
+
