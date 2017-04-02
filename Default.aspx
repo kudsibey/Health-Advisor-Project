@@ -9,7 +9,7 @@
 
     void RadBtnListGender_SelectedIndexChanged(Object sender, EventArgs e) {
 
-        LabelBMIResult.Text = "Please enter details of your daily excercise.";
+        LabelBMIResult.Text = "Please enter details of your daily exercise.";
         LabelIdealWeight.Text = "And click on [Advise Me] button for your results.";
         LabelFinalResult.Text = "";
         LabelKgToCals.Text = "";
@@ -51,9 +51,9 @@
                   <div style="text-align:left;">
                       
                       <div class="row"> 
-                           <div class="col-md-3 nP"> <span>Your Age:</span> </div>
+                           <div class="col-md-3 nP"> <span>Age:</span> </div>
                            <div class="col-md-9">
-                               <asp:TextBox ID="TextBoxAge" Width="30px" Height="30px" runat="server" ToolTip="Age in Years">46</asp:TextBox>
+                               <asp:TextBox ID="TextBoxAge" Width="30px" Height="30px" runat="server"  ToolTip="Age in Years">46</asp:TextBox>&nbsp;years
                            </div>
                       </div>
                       <asp:RangeValidator runat="server" Type="Integer" 
@@ -64,7 +64,7 @@
                       <div class="row">
                           <div class="col-md-3 nP"> <span>Height:</span> </div>
                           <div class="col-md-9">
-                              <asp:TextBox ID="TextBoxHeight" Width="30px" Height="30px" runat="server" ToolTip="in centimeters">175</asp:TextBox>
+                              <asp:TextBox ID="TextBoxHeight" Width="30px" Height="30px" runat="server" ToolTip="in centimeters">175</asp:TextBox>&nbsp;cm.
                           </div>
                       </div>
                       <asp:RangeValidator runat="server" Type="Integer" 
@@ -75,7 +75,7 @@
                        <div class="row">
                           <div class="col-md-3 nP"> <span>Weight:</span> </div>
                           <div class="col-md-9">
-                              <asp:TextBox ID="TextBoxWeight" Width="30px" Height="30px" runat="server" ToolTip="in kilograms">85</asp:TextBox>
+                              <asp:TextBox ID="TextBoxWeight" Width="30px" Height="30px" runat="server" ToolTip="in kilograms">85</asp:TextBox>&nbsp;kg.
                           </div>
                      </div>
                      <asp:RangeValidator runat="server" Type="Integer" 
@@ -95,7 +95,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Moderate House Work:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextHouseCleanHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextHouseCleanHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -105,7 +105,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Running-6 mph:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextRunningHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextRunningHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">0</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -115,7 +115,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Walking 3.0 mph:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextWalkingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextWalkingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -126,7 +126,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Walk upstairs:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextStairHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextStairHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">10</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -136,7 +136,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Crew, sculling, rowing:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextRowingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextRowingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">0</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -147,7 +147,7 @@
                       <div class="row">
                           <div class="col-md-5 nP"> <span">Swimming laps, freestyle, slow:</span> </div>
                           <div class="col-md-7">
-                               <asp:TextBox ID="TextSwimmingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">30</asp:TextBox>mins
+                               <asp:TextBox ID="TextSwimmingHrs" Width="30px" Height="30px" runat="server" ToolTip="in minutes">0</asp:TextBox>&nbsp;mins.
                           </div>
                       </div> 
                       <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
@@ -161,16 +161,18 @@
          <a href="#getHealthResults"></a>
          <h4>Your Results</h4>
           <div>
-            <asp:Label ID="Label4" runat="server" Text="BMI:" Font-Bold="True" Font-Names="Verdana"></asp:Label> <br />
-            <asp:TextBox ID="TextBoxBMI" runat="server" Width="56px" Enabled="False" Font-Bold="True" Font-Italic="True" Font-Names="Lucida Sans" ToolTip="A&nbsp;body mass index (BMI)&nbsp;above the healthy weight range or&nbsp;too much fat around your waist can increase your risk of serious health problems, like heart disease, type 2 diabetes, stroke and certain cancers."></asp:TextBox> <br /> <br />
+            <asp:Label ID="Label4" runat="server" Text="BMI:" Font-Bold="True" Font-Names="Verdana"></asp:Label>
+            <asp:Label ID="Label11" runat="server" Text="&nbsp;&nbsp;&#9432;" Font-Bold="True"  Font-Size="18" ForeColor="blue" Font-Names="Verdana" style="cursor:pointer" ToolTip="A&nbsp;body mass index (BMI)&nbsp;above the healthy weight range or&nbsp;too much fat around your waist can increase your risk of serious health problems, like heart disease, type 2 diabetes, stroke and certain cancers."></asp:Label> <br />
+            <asp:TextBox ID="TextBoxBMI" runat="server" Width="56px" Enabled="False" Font-Bold="True" Font-Italic="True" Font-Names="Lucida Sans" ></asp:TextBox> <br /> <br />
           
-           <asp:Label ID="Label5" runat="server" Text="BMR" Font-Bold="True" Font-Names="Verdana"></asp:Label><br />
-           <asp:TextBox ID="TextBoxBMR" runat="server" Width="56px" Enabled="False" ToolTip="Basal metabolic rate (BMR) is the amount of energy expended while at rest in a neutrally temperate environment, in the post-absorptive state (meaning that the digestive system is inactive, which requires about twelve hours of fasting)."></asp:TextBox> <br /> <br />
+           <asp:Label ID="Label5" runat="server" Text="BMR" Font-Bold="True" Font-Names="Verdana"></asp:Label>
+           <asp:Label ID="Label122" runat="server" Text="&nbsp;&nbsp;&#9432;" Font-Bold="True"  Font-Size="18" ForeColor="blue" Font-Names="Verdana" style="cursor:pointer" ToolTip="Basal metabolic rate (BMR) is the amount of energy expended while at rest in a neutrally temperate environment, in the post-absorptive state (meaning that the digestive system is inactive, which requires about twelve hours of fasting)."></asp:Label> <br />
+           <asp:TextBox ID="TextBoxBMR" runat="server" Width="56px" Enabled="False" ></asp:TextBox> <br /> <br />
 
            <asp:Label ID="Label12" runat="server" Text=""></asp:Label> <br />
            <asp:TextBox ID="TextDesiredWeight" runat="server" Width="39px" Enabled="False"></asp:TextBox> <asp:Label ID="Label20" runat="server" Text=" kg"></asp:Label> <br />
            <br />
-           <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="Advise Me!" /><br />
+           <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Advise Me!" ForeColor="yellow"  Font-Size="13" BackColor="blue"  Height="38px" Width="106px"/><br />
            
         </div>
 
@@ -179,11 +181,11 @@
   <div class="row jumbotron" id="resultPane">
       <div class="col-md-7" style="line-height:20px;padding-top:20px;">
           <ul>
-            <li><asp:Label CssClass="testInfoLabel2" ID="LabelBMIResult" runat="server" ForeColor="black">Please enter details of your daily excercise.</asp:Label> </li> 
+            <li><asp:Label CssClass="testInfoLabel2" ID="LabelBMIResult" runat="server" ForeColor="black">Please enter details of your daily exercise.</asp:Label> </li> 
             <li><asp:Label CssClass="testInfoLabel2" ID="LabelIdealWeight" runat="server">And click on [Advise Me] button for your results.</asp:Label></li>
             <li><asp:Label CssClass="testInfoLabel2" ID="LabelFinalResult" runat="server"></asp:Label></li>
             <li><asp:Label CssClass="testInfoLabel2" ID="LabelKgToCals" runat="server" Visible="False"></asp:Label></li>
-            <li><asp:Label CssClass="testInfoLabel2" ID="LabelResultOfWeek" runat="server"></asp:Label></li>
+            <li><asp:Label CssClass="testInfoLabel2" ID="LabelResultOfWeek" style="text-indent:each-line hanging" runat="server"></asp:Label></li>
           </ul>
       </div>
       <div class="col-md-5" style="width:40%">     

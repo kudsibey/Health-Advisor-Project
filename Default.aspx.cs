@@ -66,10 +66,10 @@ public partial class _Default : System.Web.UI.Page
         bmi = weight / ((height / 100) * (height / 100));
         TextBoxBMI.Text = Convert.ToString(Convert.ToInt16(bmi));
        
-        if (bmi < 18.5) { bmiResult = "You are underweight!"; UnderWeight = true; }
-        else if (bmi >= 18.5 && bmi < 24.90) { bmiResult = "Your BMI is normal"; NormalWeight = true; }
-        else if (bmi >= 24.90 && bmi < 29.90) { bmiResult = "You are overweight!"; }
-        else { bmiResult = "You are obese!"; }
+        if (bmi < 18.5) { bmiResult = "✓ You are underweight!"; UnderWeight = true; }
+        else if (bmi >= 18.5 && bmi <= 25.00) { bmiResult = "✓ Your BMI is normal"; NormalWeight = true; }
+        else if (bmi > 25.00 && bmi <= 30.00) { bmiResult = "✓ You are overweight!"; }
+        else { bmiResult = "✓ You are obese!"; }
         LabelBMIResult.Text = bmiResult;
         CalculateIdealWeight();
     }
@@ -105,8 +105,8 @@ public partial class _Default : System.Web.UI.Page
 
         IdealWeightFrom = 18.50 * ((height / 100) * (height / 100));
         IdealWeightTo = 24.90 * ((height / 100) * (height / 100));
-        LabelIdealWeight.Text = "Your ideal Weight is between " + Convert.ToString(Convert.ToInt16(IdealWeightFrom) + " kg to " +
-                                                                 Convert.ToString(Convert.ToInt16(IdealWeightTo))) + " kg";
+        LabelIdealWeight.Text = "✓ Your ideal weight is between " + Convert.ToString(Convert.ToInt16(IdealWeightFrom) + " kg and " +
+                                                                 Convert.ToString(Convert.ToInt16(IdealWeightTo))) + " kg.";
 
         if (UnderWeight)
         {
@@ -114,23 +114,30 @@ public partial class _Default : System.Web.UI.Page
             WeightToGainTo = IdealWeightTo - weight;
             WeightToLooseFrom = weight - IdealWeightTo;
             WeightToLooseTo = weight - IdealWeightFrom;
-            LabelFinalResult.Text = "You need to gain at least " + Convert.ToString(Convert.ToInt16(WeightToGainFrom) + " kg to " +
-                                                                                        Convert.ToString(Convert.ToInt16(WeightToGainTo))) + " kg of weight";
-            Label12.Text = "You should try losing";
+            LabelFinalResult.Text = "✓ You need to gain at least " + Convert.ToString(Convert.ToInt16(WeightToGainFrom) + " kg but NO MORE than " +
+                                                                                        Convert.ToString(Convert.ToInt16(WeightToGainTo))) + " kg of weight.";
+            Label12.Text = "✓ You should try gaining weight";
             TextDesiredWeight.Text = Convert.ToString(Convert.ToInt16(WeightToGainFrom));
-            LabelResultOfWeek.Text = "Please ask a health professional to get guidence on how to gain weight.";
+            LabelResultOfWeek.Text = "✓ Always ask a health professional to get advice on how to gain weight.";
         }
         else
         {
             WeightToLooseFrom = weight - IdealWeightTo;
             WeightToLooseTo = weight - IdealWeightFrom;
-            if (WeightToLooseFrom < 0) { WeightToLooseFrom = 0; }
-            if (WeightToLooseTo < 0) { WeightToLooseTo = 0; }
-            LabelFinalResult.Text = "You need to lose at least " + Convert.ToString(Convert.ToInt16(WeightToLooseFrom) + " kg up to " +
-                                                                                        Convert.ToString(Convert.ToInt16(WeightToLooseTo))) + " kg of weight";
+            if (Convert.ToInt16(WeightToLooseFrom) <= 0) { WeightToLooseFrom = 0; }
+            if (Convert.ToInt16(WeightToLooseTo) <= 0) { WeightToLooseTo = 0; }
+            if (WeightToLooseFrom != 0)
+            {
+                LabelFinalResult.Text = "✓ You need to lose at least " + Convert.ToString((int)(WeightToLooseFrom) + " kg BUT NO MORE than " +
+                                                                                        Convert.ToString(Convert.ToInt16(WeightToLooseTo))) + " kg of weight.";
+            } else
+            {
+                LabelFinalResult.Text = "✓ You don't need to lose weight however if you try losing weight DO NOT lose more than " + Convert.ToString(Convert.ToInt16(WeightToLooseTo)) + " kg.";
+                                                                                            
+            }
             Label12.Text = "You should try losing";
-            TextDesiredWeight.Text = Convert.ToString((int)WeightToLooseTo);
-            LabelResultOfWeek.Text = "Based on your weekly excercise pattern, you can burn approxiametly " + Convert.ToString(CalcBurnCalWeekBasis(weight)) + " calories in the initial week";
+            TextDesiredWeight.Text = Convert.ToString((int)WeightToLooseFrom);
+            LabelResultOfWeek.Text = "✓ You will burn " + Convert.ToString(Convert.ToInt16(CalcBurnCalWeekBasis(weight))) + " calories during the first week.";
             // this version of Advisor will only deal with minimum weight lost recommended
             //TextDesiredWeight.Enabled = true;
         }
@@ -158,13 +165,13 @@ public partial class _Default : System.Web.UI.Page
         
         if (!UnderWeight)
         {
-            LabelKgToCals.Text = "You need to burn " + Convert.ToInt16(TextDesiredWeight.Text) * 3850 + " calories to loose " +
-                                            TextDesiredWeight.Text + " kg and this will take approx " + Convert.ToString(WeekNo)+"  weeks";
+            LabelKgToCals.Text = "✓ You need to burn " + Convert.ToInt16(TextDesiredWeight.Text) * 3850 + " calories to loose " +
+                                            TextDesiredWeight.Text + " kg and this will take approx " + Convert.ToString(WeekNo)+"  weeks.";
         }
         else
         {
-            LabelKgToCals.Text = "You need to reserve " + Convert.ToInt16(TextDesiredWeight.Text) * 3850 + " calories to gain " + 
-                                            TextDesiredWeight.Text + " kg";
+            LabelKgToCals.Text = "✓ You need to reserve " + Convert.ToInt16(TextDesiredWeight.Text) * 3850 + " calories to gain " + 
+                                            TextDesiredWeight.Text + " kg.";
         }
 
     }
@@ -205,6 +212,7 @@ public partial class _Default : System.Web.UI.Page
         return TotalWeekCals;
     }
 
+
     public void ChartMaker()
     {
         List<int> WeightTrace = new List<int>();
@@ -231,8 +239,9 @@ public partial class _Default : System.Web.UI.Page
         cTestChart.Series.Add(new Series());
         cTestChart.Series[0].Points.DataBindXY(xName, yVal);
 
-       
-        //SET THE CHART TYPE TO BE PIE
+
+
+        //SET THE CHART TYPE TO BE SPLINE
         cTestChart.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Spline;
        
 
@@ -259,7 +268,8 @@ public partial class _Default : System.Web.UI.Page
         cTestChart.ChartAreas[0].AxisY.Maximum = (int)myWeightLossTrace[0].WeightInWeek;
         cTestChart.ChartAreas[0].AxisY.Minimum = (int)myWeightLossTrace[myWeightLossTrace.Count-1].WeightInWeek;
 
-        cTestChart.Series[0].AxisLabel = "Weeksssss";
+
+        cTestChart.Series[0].LegendText = "weight";
 
         cTestChart.Legends.Add(new Legend());
         cTestChart.Legends[0].Title = "week by week";
